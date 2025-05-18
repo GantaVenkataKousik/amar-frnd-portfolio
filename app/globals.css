@@ -1,0 +1,151 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --gradient-primary: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
+  --gradient-secondary: linear-gradient(135deg, #0891b2 0%, #0ea5e9 100%);
+  --gradient-accent: linear-gradient(135deg, #0f766e 0%, #0891b2 100%);
+
+  /* Form input variables */
+  --input: 215 25% 27%;
+  --ring: 142.1 76.2% 36.3%;
+  --border: 217.2 32.6% 17.5%;
+  --muted: 210 40% 96.1%;
+  --muted-foreground: 215.4 16.3% 56.9%;
+}
+
+.hero-gradient {
+  background: radial-gradient(
+    circle at 50% 0%,
+    rgba(14, 165, 233, 0.15) 0%,
+    rgba(14, 165, 233, 0.05) 30%,
+    rgba(0, 0, 0, 0) 70%
+  );
+}
+
+.dotted-grid {
+  background-image: radial-gradient(circle, #ffffff 1px, transparent 1px);
+  background-size: 24px 24px;
+  opacity: 0.05;
+}
+
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500;
+  text-rendering: geometricPrecision;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-rendering: geometricPrecision;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-delay-100 {
+  animation-delay: 100ms;
+}
+
+.animate-delay-200 {
+  animation-delay: 200ms;
+}
+
+.animate-delay-300 {
+  animation-delay: 300ms;
+}
+
+.animate-delay-400 {
+  animation-delay: 400ms;
+}
+
+.animate-delay-500 {
+  animation-delay: 500ms;
+}
+
+.skill-card {
+  @apply relative overflow-hidden rounded-xl border border-slate-800 bg-slate-900/50 p-6 backdrop-blur-sm transition-all duration-300;
+}
+
+.skill-card:hover {
+  @apply border-cyan-900/50 bg-slate-800/50 shadow-lg shadow-cyan-900/10;
+}
+
+.skill-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(14, 165, 233, 0.1), transparent);
+  transition: 0.5s;
+}
+
+.skill-card:hover::before {
+  left: 100%;
+}
+
+/* Mobile optimizations */
+@media (max-width: 640px) {
+  input,
+  textarea,
+  button {
+    font-size: 16px !important; /* Prevents iOS zoom on focus */
+  }
+
+  .text-gradient {
+    background-size: 200% 100%;
+  }
+}
